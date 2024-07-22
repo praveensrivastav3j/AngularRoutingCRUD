@@ -1,0 +1,87 @@
+<div v-html="event.view">
+</div>
+
+
+<div class="container">
+  <div class="d-flex justify-content-between my-4 ">
+    <h1 class="text-info">Product List</h1>
+    <button class="btn btn-info text-light" [routerLink]="['/add']">Add Product</button>
+  </div>
+  <div>
+    <!-- table -->
+    <table class="table container">
+      <thead>
+        <tr>
+          <th scope="col">user_id</th>
+          <th scope="col">FName</th>
+          <th scope="col">LName</th>
+          <th scope="col">email</th>
+          <th scope="col">dob</th>
+          <th scope="col">address</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of userData; track user.id; let i = $index) {
+        <tr>
+          <td>{{i+1}}</td>
+          <td>{{user.Fname}}</td>
+          <td>{{user.Lname}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.dob}}</td>
+          <td>{{user.address}}</td>
+          <td>
+
+            <button class="btn btn-outline-danger me-2" [routerLink]="['/update/', user.id]">update</button>
+            <button class="btn btn-outline-danger" (click)=" DeleteUserDate(user.id)">delete</button>
+          </td>
+        </tr>
+        }
+
+
+      </tbody>
+    </table>
+
+
+
+
+    <!-- <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>
+                    <button class="btn btn-success text-light me-2" [routerLink]="['/update',1]">Update</button>
+                    <button class="btn btn-danger  text-light ">delete</button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>
+                    <button class="btn btn-success text-light me-2"  [routerLink]="['/update',2]">Update</button>
+                    <button class="btn btn-danger  text-light ">delete</button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>
+                    <button class="btn btn-success text-light me-2"  [routerLink]="['/update',3]">Update</button>
+                    <button class="btn btn-danger  text-light ">delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table> -->
+  </div>
+</div>

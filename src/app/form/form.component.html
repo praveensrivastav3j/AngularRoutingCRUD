@@ -1,0 +1,91 @@
+<div v-html="event.view">
+</div>
+
+
+<div class="container">
+  <div class="d-flex justify-content-between my-4 ">
+    <h1 class="text-primary-emphasis">{{userData.id? 'Update List' :'Add List'}}</h1>
+    <button class="btn btn-primary   text-light  " [routerLink]="['/list']">BACK</button>
+  </div>
+  <div>
+
+
+    <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+      <div class="row g-3 ">
+        <div class="mb-3 col-md-6">
+          <label for="Fname" class="form-label">First name</label>
+          <input type="text" class="form-control" id="exampleInputFname" formControlName="Fname">
+          @if(UserFormValue['Fname'].invalid && (UserFormValue['Fname'].touched || userFormsubmitted)){
+          <div class="text-danger">
+            @if(UserFormValue['Fname'].hasError('required')){
+            <span>first name is required</span>
+            }
+          </div>
+          }
+
+        </div>
+
+
+        <div class="mb-3 col-md-6">
+          <label for="Lname" class="form-label">last name</label>
+          <input type="text" class="form-control" id="exampleInputLname" formControlName="Lname">
+          @if(UserFormValue['Lname'].invalid && (UserFormValue['Lname'].touched || userFormsubmitted)){
+          <div class="text-danger">
+            @if(UserFormValue['Lname'].hasError('required')){
+            <span>Last name is required</span>
+            }
+          </div>
+          }
+        </div>
+      </div>
+
+
+
+
+      <div class="row g-3 ">
+        <div class="mb-3 col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email">
+          @if(UserFormValue['email'].invalid && (UserFormValue['email'].touched || userFormsubmitted)){
+          <div class="form-text  text-danger ">
+            @if(UserFormValue['email'].hasError('required')){
+            <span>email is required</span>
+            }
+          </div>
+          }
+        </div>
+
+
+        <div class="mb-3 col-md-6">
+          <label for="dob" class="form-label">date of birth</label>
+          <input type="date" class="form-control" id="exampleInputDOB" formControlName="dob">
+          @if(UserFormValue['dob'].invalid && (UserFormValue['dob'].touched || userFormsubmitted)){
+          <div class="text-danger">
+            @if(UserFormValue['dob'].hasError('required')){
+            <span>please enter date of birth</span>
+            }
+          </div>
+          }
+        </div>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="address"></textarea>
+        @if(UserFormValue['address'].invalid && (UserFormValue['address'].touched || userFormsubmitted)){
+        <div class="text-danger">
+          @if(UserFormValue['address'].hasError('required')){
+          <span>please enter address</span>
+          }
+        </div>
+        }
+      </div>
+
+
+
+      <div class="text-center ">
+        <button class="btn btn-primary me-2 " type="submit">{{userData.id? 'Update' :'Submit'}}</button>
+        <button class="btn btn-danger" type="reset">reset</button>
+      </div>
+    </form>
